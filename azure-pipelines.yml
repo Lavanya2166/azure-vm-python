@@ -7,21 +7,21 @@ trigger:
 - main
 
 pool:
-  name: Default  # This uses your self-hosted agent running on your VM
+  name: Default
 
 steps:
 
 - task: CopyFilesOverSSH@0
   inputs:
-    sshEndpoint: 'vm-ssh-new'  # Replace this with your exact SSH service connection name
+    sshEndpoint: 'vm-ssh-new'  # Your correct service connection name
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**'
-    targetFolder: '/home/azureagent/azure_vm_manager'
+    targetFolder: '/home/azureuser/azure_vm_manager'
 
 - task: SSH@0
   inputs:
-    sshEndpoint: 'vm-ssh-new'  # Same SSH service connection name
+    sshEndpoint: 'vm-ssh-new'
     runOptions: 'commands'
     commands: |
-      cd /home/azureagent/azure_vm_manager
+      cd /home/azureuser/azure_vm_manager
       python3 azure_vm_manager.py
