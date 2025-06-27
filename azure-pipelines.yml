@@ -23,7 +23,5 @@ steps:
     sshEndpoint: 'vm-ssh-new'
     runOptions: 'commands'
     commands: |
-      cd /home/azureuser/azure_vm_manager
-      ls
-      python3 azure.py
-
+      ls -l /home/azureuser/azure_vm_manager
+      python3 /home/azureuser/azure_vm_manager/azure.py
