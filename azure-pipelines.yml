@@ -7,13 +7,13 @@ trigger:
 - main
 
 pool:
-  name: Default
+  vmImage: ubuntu-latest
 
 steps:
 
 - task: CopyFilesOverSSH@0
   inputs:
-    sshEndpoint: 'vm-ssh-new'  
+    sshEndpoint: 'vm-ssh-new'
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**'
     targetFolder: '/home/azureuser/azure_vm_manager'
@@ -24,5 +24,5 @@ steps:
     runOptions: 'commands'
     commands: |
       cd /home/azureuser/azure_vm_manager
-      python3 azure-vm-python.py
-
+      ls  # helps confirm the file is present
+      python3 azure.py
