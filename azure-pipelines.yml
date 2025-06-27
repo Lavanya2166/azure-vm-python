@@ -24,5 +24,6 @@ steps:
     runOptions: 'commands'
     commands: |
       cd /home/azureuser/azure_vm_manager
-      ls  # helps confirm the file is present
+      ls
       python3 azure.py
+
