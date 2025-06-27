@@ -13,7 +13,7 @@ steps:
 
 - task: CopyFilesOverSSH@0
   inputs:
-    sshEndpoint: 'vm-ssh-new'  # Your correct service connection name
+    sshEndpoint: 'vm-ssh-new'  
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**'
     targetFolder: '/home/azureuser/azure_vm_manager'
@@ -24,4 +24,5 @@ steps:
     runOptions: 'commands'
     commands: |
       cd /home/azureuser/azure_vm_manager
-      python3 azure_vm_manager.py
+      python3 azure-vm-python.py
+
