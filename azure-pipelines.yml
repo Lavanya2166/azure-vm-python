@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'vm-ssh'  
+    sourceFolder: '$(Build.SourcesDirectory)'  
+    contents: '**'
+    targetFolder: '/home/azureuser/testvm_manager' 
+
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'vm-ssh'
+    runOptions: 'commands'
+    commands: |
+      cd /home/azureuser/testvm_manager
+      python3 azure_vm_manager.py
