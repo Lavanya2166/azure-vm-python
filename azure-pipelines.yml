@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: Default
+  name: Default  # Since you're using a self-hosted agent
 
 steps:
 
@@ -16,12 +16,12 @@ steps:
     sshEndpoint: 'vm-ssh-new'
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '**'
-    targetFolder: '/home/azureuser/azure_vm_manager'
+    targetFolder: '/home/azureuser'  
 
 - task: SSH@0
   inputs:
     sshEndpoint: 'vm-ssh-new'
     runOptions: 'commands'
     commands: |
-      cd /home/azureuser/azure_vm_manager
-     
+      cd /home/azureuser
+  
